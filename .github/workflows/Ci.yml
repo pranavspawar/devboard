@@ -1,0 +1,30 @@
+name : Ci-Pipeline
+on : 
+    push:
+        branches: feature/CI
+
+jobs : 
+    frontend:
+        runs-on : ubuntu-latest 
+        steps:
+            - name : git clone 
+              uses : actions/checkout@v2
+        
+            - name : setup nodejs of frontend 
+              uses : actions/setup-node@v6
+              with : 
+                node-version : "20"
+                cache: true
+                cache-dependency-path: frontend/package-lock.json
+
+            - name : install dependancies 
+              run : npm install 
+              working-directory : /frontend 
+
+            - name : Check ESlint
+              run : npm run lint 
+              working-directory : /frontend
+            - name : test npm 
+              run : npm run test 
+              working-directory : /frontend
+              
