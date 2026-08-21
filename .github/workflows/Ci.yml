@@ -19,11 +19,11 @@ jobs :
 
             - name : install dependancies 
               run : npm install 
-              working-directory : /frontend 
+              working-directory : /home/dell/devboard/frontend
 
             - name : Check ESlint
               run : npm run lint 
-              working-directory : /frontend
+              working-directory : /home/dell/devboard/frontend
             - name : test npm 
               run : npm run test 
-              working-directory : /frontend
+              working-directory : /home/dell/devboard/frontend
