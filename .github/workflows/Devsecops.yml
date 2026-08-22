@@ -16,3 +16,4 @@ jobs:
 
   Buildstage-Docker-scan-hardolint-trivy-scan : 
     uses: ./.github/workflows/Docker-scan.yml
+    secrets: inherit
