@@ -10,3 +10,6 @@ jobs:
 
   second-check-secerete-leaks-gitleaks : 
     uses: ./.github/workflows/Secreate-scan.yml
+  
+  thired-dependancy-scan : 
+    uses : ./.github/workflows/Dependancy-check.yml

@@ -1,0 +1,63 @@
+# This workflow check dependancy check And I have to ensure package and dependancy audit to security 
+
+name : Dependancy-scan 
+
+on : 
+    workflow_call: 
+jobs : 
+    check-dependancy : 
+        runs-on: ubuntu-latest
+        steps:
+            - name : git clone
+              uses: actions/checkout@v7
+
+            - name : setup golang
+              uses: actions/setup-go@v6
+              with : 
+                go-version: 1.22
+                go-version-file: 'go.mod'
+                cache: true
+                cache-dependency-path: backend/go.sum 
+
+            - name : Install govulncheck
+              run: go install golang.org/x/vuln/cmd/govulncheck@latest
+
+            - name : scan dependancy 
+              continue-on-error: true
+              run : govulncheck -show verbose ./... > govulncheck-report.txt
+              working-directory: backend
+
+            - name: Upload Vulnerability Report
+              if: always()
+              uses: actions/upload-artifact@v4
+              with : 
+                name: go-vulnerability-report
+                path : ./backend/govulncheck-report.txt
+                retention-days: 16
+            - name : Currently we igonre vernability 
+              run : echo "All vernability is go lang is ingored"
+
+
+            - name : setup node 
+              uses : actions/setup-node@v4
+              with:
+                node-version: '20'
+                cache: 'npm'
+                cache-dependency-path: frontend/package-lock.json
+            
+            - name : Install dependancy of node
+              run : npm install 
+              working-directory: frontend 
+
+            - name : run audit 
+              id : npm-audit               
+              working-directory: frontend
+              run : npm audit fix --force --json > npm-audit-report.json
+              continue-on-error: true
+
+            - name : Upload Audit Report Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: npm-security-report
+                path: ./frontend/npm-audit-report.json
+                retention-days: 14
