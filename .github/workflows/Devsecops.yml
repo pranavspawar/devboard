@@ -1,0 +1,9 @@
+# This is the main file and all workflow call from here 
+name : devsecops 
+on :
+    push: 
+        branches: feature/CI
+
+jobs:
+  first-code-quality-check-code : 
+    uses: ./.github/workflows/Code-quality-check.yml

@@ -1,7 +1,6 @@
 name : Ci-Pipeline
 on : 
-    push:
-        branches: feature/CI
+   workflow_dispatch: 
 
 jobs : 
     frontend:
@@ -33,7 +32,3 @@ jobs :
               with : 
                username: ${{ vars.DOCKERHUB_USERNAME }}
                password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-
-            - name : check username 
-              run : echo ${{vars.DOCKERHUB_USERNAME}}
