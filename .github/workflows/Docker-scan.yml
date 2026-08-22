@@ -8,7 +8,7 @@ jobs :
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                folder : ["frontend","backend"]
+                folder : ['backend', 'frontend']
 
         steps:
             - name : code checkout 
@@ -19,11 +19,12 @@ jobs :
               with:
                   dockerfile: ${{matrix.folder}}/Dockerfile 
 
-            - name : docker login 
+            - name: Docker setup [login]
               uses: docker/login-action@v4
-              with : 
-                username: ${{ vars.DOCKERHUB_USERNAME }}
-                password: ${{ secrets.DOCKERHUB_TOKEN }}
+              with:
+               username: ${{ vars.DOCKERHUB_USERNAME }}
+               password: ${{ secrets.DOCKERHUB_TOKEN }}
+
 
             - name : docker build ${{matrix.folder}}
               run : docker build -t pranav/devboard-${{matrix.folder}}:latest . 
