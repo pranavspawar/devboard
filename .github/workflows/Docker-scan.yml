@@ -1,0 +1,20 @@
+# This Ensure that docker file and docker image are security tested by using Hardolint
+
+name : Docker Scan 
+on :
+    workflow_call: 
+jobs : 
+    Docker-hardolint-scan : 
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                folder : ["frontend","backend"]
+
+        steps:
+            - name : code checkout 
+              uses: actions/checkout@v7
+            
+            - name : Lint Docker file 
+              uses : hadolint/hadolint-action@v3.1.0
+              with:
+                  dockerfile: ${{matrix.folder}}/Dockerfile 

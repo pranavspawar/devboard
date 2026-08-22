@@ -13,3 +13,6 @@ jobs:
   
   thired-dependancy-scan : 
     uses : ./.github/workflows/Dependancy-check.yml
+
+  Buildstage-Docker-scan-hardolint : 
+    uses: ./.github/workflows/Docker-scan.yml
