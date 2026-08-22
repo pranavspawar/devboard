@@ -10,7 +10,7 @@ jobs :
               uses: actions/checkout@v7
 
             - name: SonarQube Scan
-              uses: SonarSource/sonarqube-scan-action@v8.2.1
+              uses: SonarSource/sonarqube-scan-action@v8.2.0
               env : 
                 SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
