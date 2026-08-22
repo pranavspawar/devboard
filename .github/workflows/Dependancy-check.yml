@@ -51,7 +51,7 @@ jobs :
             - name : run audit 
               id : npm-audit               
               working-directory: frontend
-              run : npm audit fix --force --json > npm-audit-report.json
+              run : npm audit fix  > npm-audit-report.json
               continue-on-error: true
 
             - name : Upload Audit Report Artifact
