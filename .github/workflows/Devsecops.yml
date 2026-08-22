@@ -7,3 +7,6 @@ on :
 jobs:
   first-code-quality-check-code : 
     uses: ./.github/workflows/Code-quality-check.yml
+
+  second-check-secerete-leaks-gitleaks : 
+    uses: ./.github/workflows/Secreate-scan.yml

@@ -1,0 +1,23 @@
+# This will check secreate leak , I use gitleaks 
+# Gitleaks is an SAST tool to ensure that not any hardcoded password or api keys not leak 
+# it will check entire commit history 
+
+name : Secrate-scan
+
+on : 
+    workflow_call: 
+
+jobs : 
+    secrate-scan-Gitleaks :
+        runs-on: ubuntu-latest
+        steps :
+            - name : code checkout
+              uses: actions/checkout@v7
+              with:
+                  fetch-depth: 0
+            
+            - name : Check Gitleaks
+              uses :  gitleaks/gitleaks-action@v3
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }} # Only required for Organizations, not personal accounts.   
