@@ -24,11 +24,10 @@ jobs :
 
             - name : scan dependancy 
               continue-on-error: true
-              run : govulncheck -show verbose ./... > govulncheck-report.txt
+              run : govulncheck -show=verbose ./... > govulncheck-report.txt
               working-directory: backend
 
             - name: Upload Vulnerability Report
-              if: always()
               uses: actions/upload-artifact@v4
               with : 
                 name: go-vulnerability-report
@@ -46,7 +45,7 @@ jobs :
                 cache-dependency-path: frontend/package-lock.json
             
             - name : Install dependancy of node
-              run : npm install 
+              run : npm install --legacy-peer-deps
               working-directory: frontend 
 
             - name : run audit 
