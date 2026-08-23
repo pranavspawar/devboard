@@ -22,3 +22,5 @@ jobs:
     uses: ./.github/workflows/Sonarqube-scan.yml
     secrets: inherit
     
+  Code-Testing-stage : 
+    uses: ./.github/workflows/Code-Testing.yml

@@ -1,0 +1,37 @@
+# This workflow test your code 
+name : Code-Testing
+on : 
+    workflow_call: 
+jobs : 
+    Code-Testing:
+        runs-on: ubuntu-latest
+        steps:
+            - name : code checkout 
+              uses: actions/checkout@v7
+            
+            - name : setup nodejs 
+              uses: actions/setup-node@v6
+              with:
+                node-version : "20"
+                cache: 'npm'
+                cache-dependency-path: /frontend/package.json
+
+            - name : install npm dependancies
+              run : npm install --legacy-peer-deps
+
+            - name : Run test 
+              run : npm run test
+
+            - name : npm test 
+              run : echo"----NPM test successfully----"
+
+            - name : setup golang
+              uses: actions/setup-go@v4
+              with:
+                go-version: "1.22"
+                go-version-file: "go.mod"
+                cache: true
+                cache-dependency-path: backend/go.sum 
+            
+            - name: Run go lang
+              run : go test 
