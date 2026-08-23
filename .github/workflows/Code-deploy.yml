@@ -1,0 +1,25 @@
+# This Workflow is deploye your code. This is CD pipeline
+
+name : Code-deploy
+on : 
+    workflow_call: 
+jobs:
+    Code-deploy-stage : 
+        runs-on: self-hosted
+        steps:
+            - name : code checkout 
+              uses: actions/checkout@v7
+
+            - name : Copy Example Env to main env
+              run : cp .env.example .env
+
+            - name : setup docker login 
+              uses: docker/login-action@v3
+              with:
+                username: ${{ vars.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }} 
+
+            - name : Docker compose up 
+              run : |
+                docker compose pull
+                docker compose up -d 
