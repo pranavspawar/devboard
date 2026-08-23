@@ -26,5 +26,6 @@ jobs:
     uses: ./.github/workflows/Code-Testing.yml
 
   Docker-build-push-stage:
+    needs: [first-code-quality-check-code, second-check-secerete-leaks-gitleaks, thired-dependancy-scan, Buildstage-Docker-scan-hardolint-trivy-scan, Sonarqube-scan-code, Code-Testing-stage]
     uses: ./.github/workflows/Docker-Build-push.yml
     secrets: inherit
