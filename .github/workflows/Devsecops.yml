@@ -24,3 +24,7 @@ jobs:
     
   Code-Testing-stage : 
     uses: ./.github/workflows/Code-Testing.yml
+
+  Docker-build-push-stage:
+    uses: ./.github/workflows/Docker-Build-push.yml
+    secrets: inherit

@@ -1,0 +1,30 @@
+# This workflow is ( build Already done in dokcer scan) push the docker file 
+
+name : docker-push 
+on:
+    workflow_call: 
+jobs : 
+    docker-build-push:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                folders : ["backend","frontend"]
+        steps:
+            - name : code checkout
+              uses: actions/checkout@v7
+
+
+            - name : docker login 
+              uses: docker/login-action@v4
+              with:
+                  username: ${{ vars.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+   
+            - name : Docker build and push ${{matrix.folders}}
+              uses: docker/build-push-action@v7
+              with:
+                context: ./${{ matrix.folders }}
+                push : true
+                tags: PranavPawar/devboard-${{ matrix.folders }}:latest
+                
