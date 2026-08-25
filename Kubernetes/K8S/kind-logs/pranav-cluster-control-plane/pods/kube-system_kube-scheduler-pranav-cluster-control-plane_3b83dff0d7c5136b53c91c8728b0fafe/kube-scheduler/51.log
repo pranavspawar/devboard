@@ -1,0 +1,19 @@
+2026-08-25T04:00:51.494306815Z stderr F I0825 04:00:51.494059       1 serving.go:386] Generated self-signed cert in-memory
+2026-08-25T04:00:51.504327671Z stderr F W0825 04:00:51.504189       1 authentication.go:397] Error looking up in-cluster authentication configuration: Get "https://172.18.0.3:6443/api/v1/namespaces/kube-system/configmaps/extension-apiserver-authentication": dial tcp 172.18.0.3:6443: connect: connection refused
+2026-08-25T04:00:51.504355931Z stderr F W0825 04:00:51.504221       1 authentication.go:398] Continuing without authentication configuration. This may treat all requests as anonymous.
+2026-08-25T04:00:51.504359029Z stderr F W0825 04:00:51.504229       1 authentication.go:399] To require authentication configuration lookup to succeed, set --authentication-tolerate-lookup-failure=false
+2026-08-25T04:00:51.513229893Z stderr F I0825 04:00:51.513108       1 server.go:175] "Starting Kubernetes Scheduler" version="v1.35.0"
+2026-08-25T04:00:51.513253614Z stderr F I0825 04:00:51.513145       1 server.go:177] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+2026-08-25T04:00:51.516402232Z stderr F I0825 04:00:51.516252       1 secure_serving.go:211] Serving securely on 127.0.0.1:10259
+2026-08-25T04:00:51.518124833Z stderr F I0825 04:00:51.516506       1 tlsconfig.go:243] "Starting DynamicServingCertificateController"
+2026-08-25T04:00:51.518156525Z stderr F I0825 04:00:51.516798       1 configmap_cafile_content.go:205] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+2026-08-25T04:00:51.518226438Z stderr F I0825 04:00:51.518134       1 shared_informer.go:370] "Waiting for caches to sync"
+2026-08-25T04:14:09.793168479Z stderr F E0825 04:14:09.792894       1 server.go:286] "handlers are not fully synchronized" err="context canceled"
+2026-08-25T04:14:09.793717255Z stderr F I0825 04:14:09.793663       1 leaderelection.go:258] "Attempting to acquire leader lease..." lock="kube-system/kube-scheduler"
+2026-08-25T04:14:09.794068652Z stderr F I0825 04:14:09.793892       1 secure_serving.go:259] Stopped listening on 127.0.0.1:10259
+2026-08-25T04:14:09.794077854Z stderr F I0825 04:14:09.793918       1 server.go:263] "[graceful-termination] secure server has stopped listening"
+2026-08-25T04:14:09.794080516Z stderr F I0825 04:14:09.794016       1 tlsconfig.go:258] "Shutting down DynamicServingCertificateController"
+2026-08-25T04:14:09.794587014Z stderr F E0825 04:14:09.794141       1 shared_informer.go:373] "Unable to sync caches" logger="UnhandledError"
+2026-08-25T04:14:09.794603307Z stderr F I0825 04:14:09.794156       1 configmap_cafile_content.go:213] "Shutting down controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+2026-08-25T04:14:09.794606712Z stderr F I0825 04:14:09.794185       1 server.go:265] "[graceful-termination] secure server is exiting"
+2026-08-25T04:14:09.794609453Z stderr F I0825 04:14:09.794196       1 server.go:315] "Requested to terminate, exiting"

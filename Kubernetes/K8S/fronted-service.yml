@@ -1,0 +1,15 @@
+apiVersion: v1     # which type of api version is requird for my kubernetes object 
+kind: Service      # what type of kubernetes object i want to create  
+metadata:
+  name: devboard-fronted-service
+  namespace : devboard
+spec:
+  selector:
+    app : devboard-fronted 
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 4173
+      nodePort : 30080
+  type: NodePort  
+  

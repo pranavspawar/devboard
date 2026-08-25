@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres 
+  namespace : devboard
+spec:
+ # clusterIP: None
+  selector:
+    app : devboard-postgres  
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+
+        #Type is not mentioned so it is automatically clusterIp

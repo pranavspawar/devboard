@@ -1,0 +1,4 @@
+2026-08-25T04:20:06.770019488Z stderr F I0825 04:20:06.769848       1 options.go:263] external host was not specified, using 172.18.0.4
+2026-08-25T04:20:06.773691325Z stderr F I0825 04:20:06.773520       1 server.go:150] Version: v1.35.0
+2026-08-25T04:20:06.773719629Z stderr F I0825 04:20:06.773570       1 server.go:152] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+2026-08-25T04:20:06.777421233Z stderr F E0825 04:20:06.777251       1 run.go:72] "command failed" err="open /etc/kubernetes/pki/apiserver.crt: no such file or directory"
