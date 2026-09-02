@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: devboard-backend-application
-        image: devboard-backend:latest 
+        image: pawarpranav/devboard-backend:latest 
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
