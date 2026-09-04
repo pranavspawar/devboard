@@ -20,11 +20,12 @@ spec:
     spec:
       containers:
       - name: devboard-backend-application
-        image: pawarpranav/devboard-backend:latest 
+        image: devboard-backend:latest 
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
-       
+      
+
         env:
             - name: POSTGRES_USER
               valueFrom:
@@ -52,17 +53,20 @@ spec:
 
             - name : POSTGRES_URL
               value : postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres:5432/$(POSTGRES_DB)?sslmode=disable
- 
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 25
-          periodSeconds: 15
 
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 20
-          periodSeconds: 15
+
+                #       livenessProbe:
+                #      httpGet:
+                # path: /health
+                # port: 8080
+                # initialDelaySeconds: 25
+                # periodSeconds: 15
+
+                #   readinessProbe:
+                #    httpGet:
+                #     path: /health
+                #     port: 8080
+                #       initialDelaySeconds: 20
+                #       periodSeconds: 15
+
+
