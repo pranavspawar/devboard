@@ -7,7 +7,7 @@ metadata:
     app: devboard-fronted
 
 spec:
-  replicas: 2
+  replicas: 1 
   selector:
     matchLabels:
       app: devboard-fronted
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: devboard-fronted-application
-          image: pawarpranav/devboard-frontend3:v1 
+          image: pawarpranav/devboard-frontend3:v2 
           imagePullPolicy: IfNotPresent
 
           ports:
