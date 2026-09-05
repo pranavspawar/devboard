@@ -32,8 +32,8 @@ jobs:
 
 # ------- CD ------
 
-  Docker-deploye-code:
-    needs: [Docker-build-push-stage]
-    uses: ./.github/workflows/Code-deploy.yml
-    secrets: inherit 
+ # Docker-deploye-code:
+#    needs: [Docker-build-push-stage]
+#    uses: ./.github/workflows/Code-deploy.yml
+#    secrets: inherit 
     
