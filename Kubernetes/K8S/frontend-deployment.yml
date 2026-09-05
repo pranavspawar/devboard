@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: devboard-fronted-application
-          image: pawarpranav/devboard-frontend3:v2 
+          image: devboard-frontend:v1.0.33
           imagePullPolicy: IfNotPresent
 
           ports:
