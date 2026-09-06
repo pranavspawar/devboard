@@ -1,3 +1,10 @@
+// DevBoard backend — a minimal Go + Gin REST API over PostgreSQL.
+//
+// This is the "advanced" branch's backend: the same React UI as the
+// fundamentals branch, but its data now comes from real HTTP endpoints
+// backed by Postgres instead of an in-memory mock store. No auth, no queues,
+// no tracing — just projects and tasks CRUD, kept deliberately small so the
+// wiring (UI → gateway → Go → Postgres) is the whole lesson.
 package main
 
 import (

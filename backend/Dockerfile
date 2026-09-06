@@ -1,3 +1,5 @@
+# Single-stage: build and run the Go binary from the same golang image.
+# (No multi-stage yet — slimming the final image comes later in the course.)
 FROM golang:1.22-alpine
 
 WORKDIR /app
