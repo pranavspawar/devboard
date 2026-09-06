@@ -94,7 +94,11 @@ func listProjects(c *gin.Context) {
 		fail(c, err)
 		return
 	}
-	defer rows.Close()
+	defer func() {
+		if err := rows.Close(); err != nil {
+			log.Printf("[backend] error closing rows: %v", err)
+		}
+	}()
 
 	projects := []Project{}
 	for rows.Next() {
@@ -147,7 +151,11 @@ func listTasks(c *gin.Context) {
 		fail(c, err)
 		return
 	}
-	defer rows.Close()
+	defer func() {
+		if err := rows.Close(); err != nil {
+			log.Printf("[backend] error closing rows: %v", err)
+		}
+	}()
 
 	tasks, err := scanTasks(rows)
 	if err != nil {
@@ -252,7 +260,11 @@ func searchTasks(c *gin.Context) {
 		fail(c, err)
 		return
 	}
-	defer rows.Close()
+	defer func() {
+		if err := rows.Close(); err != nil {
+			log.Printf("[backend] error closing rows: %v", err)
+		}
+	}()
 
 	tasks, err := scanTasks(rows)
 	if err != nil {
