@@ -1,0 +1,160 @@
+2026-08-20T19:36:56.460073525Z stdout F 
+2026-08-20T19:36:56.46012178Z stdout F PostgreSQL Database directory appears to contain a database; Skipping initialization
+2026-08-20T19:36:56.460125784Z stdout F 
+2026-08-20T19:37:32.931992002Z stderr F 2026-08-20 19:37:32.931 UTC [1] LOG:  starting PostgreSQL 18.4 (Debian 18.4-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-08-20T19:37:33.055819732Z stderr F 2026-08-20 19:37:33.055 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-08-20T19:37:33.055849308Z stderr F 2026-08-20 19:37:33.055 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-08-20T19:37:35.870251219Z stderr F 2026-08-20 19:37:35.870 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-08-20T19:37:38.794644027Z stderr F 2026-08-20 19:37:38.794 UTC [1] LOG:  untracked child process (PID 44) exited with exit code 2
+2026-08-20T19:37:38.794684001Z stderr F 2026-08-20 19:37:38.794 UTC [1] LOG:  terminating any other active server processes
+2026-08-20T19:37:38.79656564Z stderr F 2026-08-20 19:37:38.796 UTC [1] LOG:  all server processes terminated; reinitializing
+2026-08-20T19:37:39.984692583Z stderr F 2026-08-20 19:37:39.984 UTC [60] LOG:  database system was interrupted; last known up at 2026-08-18 16:41:59 UTC
+2026-08-20T19:37:42.262715063Z stderr F 2026-08-20 19:37:42.262 UTC [71] FATAL:  the database system is in recovery mode
+2026-08-20T19:37:50.692106858Z stderr F 2026-08-20 19:37:50.691 UTC [60] LOG:  syncing data directory (fsync), elapsed time: 10.18 s, current path: ./postmaster.pid
+2026-08-20T19:37:57.30345643Z stderr F 2026-08-20 19:37:57.303 UTC [79] FATAL:  the database system is in recovery mode
+2026-08-20T19:38:00.53803841Z stderr F 2026-08-20 19:38:00.537 UTC [60] LOG:  syncing data directory (fsync), elapsed time: 20.03 s, current path: ./pg_logical/replorigin_checkpoint
+2026-08-20T19:38:10.599066407Z stderr F 2026-08-20 19:38:10.598 UTC [60] LOG:  syncing data directory (fsync), elapsed time: 30.09 s, current path: ./base/4/2669
+2026-08-20T19:38:12.263461471Z stderr F 2026-08-20 19:38:12.263 UTC [87] FATAL:  the database system is in recovery mode
+2026-08-20T19:38:20.567955198Z stderr F 2026-08-20 19:38:20.567 UTC [60] LOG:  syncing data directory (fsync), elapsed time: 40.06 s, current path: ./base/5/2602_vm
+2026-08-20T19:38:24.301924466Z stderr F 2026-08-20 19:38:24.301 UTC [60] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-08-20T19:38:24.609488121Z stderr F 2026-08-20 19:38:24.609 UTC [60] LOG:  redo starts at 0/1C04A90
+2026-08-20T19:38:24.60952072Z stderr F 2026-08-20 19:38:24.609 UTC [60] LOG:  invalid record length at 0/1C04AC8: expected at least 24, got 0
+2026-08-20T19:38:24.609528204Z stderr F 2026-08-20 19:38:24.609 UTC [60] LOG:  redo done at 0/1C04A90 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2026-08-20T19:38:26.011740555Z stderr F 2026-08-20 19:38:26.011 UTC [61] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-08-20T19:38:27.282704811Z stderr F 2026-08-20 19:38:27.282 UTC [95] FATAL:  the database system is not yet accepting connections
+2026-08-20T19:38:27.28273274Z stderr F 2026-08-20 19:38:27.282 UTC [95] DETAIL:  Consistent recovery state has not been yet reached.
+2026-08-20T19:38:29.4789385Z stderr F 2026-08-20 19:38:29.478 UTC [61] LOG:  checkpoint complete: wrote 0 buffers (0.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.071 s, sync=0.059 s, total=3.721 s; sync files=2, longest=0.058 s, average=0.030 s; distance=0 kB, estimate=0 kB; lsn=0/1C04AC8, redo lsn=0/1C04AC8
+2026-08-20T19:38:29.738221863Z stderr F 2026-08-20 19:38:29.737 UTC [1] LOG:  database system is ready to accept connections
+2026-08-20T19:38:42.4075853Z stderr F 2026-08-20 19:38:42.407 UTC [106] FATAL:  role "-d" does not exist
+2026-08-20T19:38:58.555647274Z stderr F 2026-08-20 19:38:58.555 UTC [114] FATAL:  role "-d" does not exist
+2026-08-20T19:39:12.274613773Z stderr F 2026-08-20 19:39:12.274 UTC [123] FATAL:  role "-d" does not exist
+2026-08-20T19:39:27.281828764Z stderr F 2026-08-20 19:39:27.281 UTC [131] FATAL:  role "-d" does not exist
+2026-08-20T19:39:42.259522289Z stderr F 2026-08-20 19:39:42.259 UTC [140] FATAL:  role "-d" does not exist
+2026-08-20T19:39:57.279954669Z stderr F 2026-08-20 19:39:57.279 UTC [148] FATAL:  role "-d" does not exist
+2026-08-20T19:40:12.283007431Z stderr F 2026-08-20 19:40:12.282 UTC [156] FATAL:  role "-d" does not exist
+2026-08-20T19:40:27.297491695Z stderr F 2026-08-20 19:40:27.297 UTC [164] FATAL:  role "-d" does not exist
+2026-08-20T19:40:42.284396173Z stderr F 2026-08-20 19:40:42.284 UTC [173] FATAL:  role "-d" does not exist
+2026-08-20T19:40:57.285310825Z stderr F 2026-08-20 19:40:57.285 UTC [181] FATAL:  role "-d" does not exist
+2026-08-20T19:41:12.264236491Z stderr F 2026-08-20 19:41:12.264 UTC [189] FATAL:  role "-d" does not exist
+2026-08-20T19:41:27.282683893Z stderr F 2026-08-20 19:41:27.282 UTC [197] FATAL:  role "-d" does not exist
+2026-08-20T19:41:42.271035751Z stderr F 2026-08-20 19:41:42.270 UTC [206] FATAL:  role "-d" does not exist
+2026-08-20T19:41:57.272520159Z stderr F 2026-08-20 19:41:57.272 UTC [214] FATAL:  role "-d" does not exist
+2026-08-20T19:42:12.280487149Z stderr F 2026-08-20 19:42:12.280 UTC [222] FATAL:  role "-d" does not exist
+2026-08-20T19:42:27.274710507Z stderr F 2026-08-20 19:42:27.274 UTC [230] FATAL:  role "-d" does not exist
+2026-08-20T19:42:42.371160037Z stderr F 2026-08-20 19:42:42.371 UTC [239] FATAL:  role "-d" does not exist
+2026-08-20T19:42:57.265769433Z stderr F 2026-08-20 19:42:57.265 UTC [247] FATAL:  role "-d" does not exist
+2026-08-20T19:43:12.260446623Z stderr F 2026-08-20 19:43:12.260 UTC [255] FATAL:  role "-d" does not exist
+2026-08-20T19:43:27.28409111Z stderr F 2026-08-20 19:43:27.283 UTC [263] FATAL:  role "-d" does not exist
+2026-08-20T19:43:42.294698254Z stderr F 2026-08-20 19:43:42.294 UTC [272] FATAL:  role "-d" does not exist
+2026-08-20T19:43:57.28138565Z stderr F 2026-08-20 19:43:57.281 UTC [280] FATAL:  role "-d" does not exist
+2026-08-20T19:44:12.271818465Z stderr F 2026-08-20 19:44:12.271 UTC [288] FATAL:  role "-d" does not exist
+2026-08-20T19:44:27.281674305Z stderr F 2026-08-20 19:44:27.281 UTC [297] FATAL:  role "-d" does not exist
+2026-08-20T19:44:42.26934957Z stderr F 2026-08-20 19:44:42.269 UTC [306] FATAL:  role "-d" does not exist
+2026-08-20T19:44:57.282516191Z stderr F 2026-08-20 19:44:57.282 UTC [314] FATAL:  role "-d" does not exist
+2026-08-20T19:45:12.303343865Z stderr F 2026-08-20 19:45:12.303 UTC [322] FATAL:  role "-d" does not exist
+2026-08-20T19:45:27.278601411Z stderr F 2026-08-20 19:45:27.278 UTC [329] FATAL:  role "-d" does not exist
+2026-08-20T19:45:42.283637134Z stderr F 2026-08-20 19:45:42.283 UTC [338] FATAL:  role "-d" does not exist
+2026-08-20T19:45:57.287178164Z stderr F 2026-08-20 19:45:57.287 UTC [346] FATAL:  role "-d" does not exist
+2026-08-20T19:46:12.284312038Z stderr F 2026-08-20 19:46:12.284 UTC [354] FATAL:  role "-d" does not exist
+2026-08-20T19:46:27.269806492Z stderr F 2026-08-20 19:46:27.269 UTC [362] FATAL:  role "-d" does not exist
+2026-08-20T19:46:42.269225448Z stderr F 2026-08-20 19:46:42.269 UTC [371] FATAL:  role "-d" does not exist
+2026-08-20T19:46:57.275144202Z stderr F 2026-08-20 19:46:57.275 UTC [379] FATAL:  role "-d" does not exist
+2026-08-20T19:47:12.263681198Z stderr F 2026-08-20 19:47:12.263 UTC [387] FATAL:  role "-d" does not exist
+2026-08-20T19:47:27.283072296Z stderr F 2026-08-20 19:47:27.282 UTC [395] FATAL:  role "-d" does not exist
+2026-08-20T19:47:42.27041999Z stderr F 2026-08-20 19:47:42.270 UTC [404] FATAL:  role "-d" does not exist
+2026-08-20T19:47:57.28144845Z stderr F 2026-08-20 19:47:57.281 UTC [412] FATAL:  role "-d" does not exist
+2026-08-20T19:48:12.269907014Z stderr F 2026-08-20 19:48:12.269 UTC [420] FATAL:  role "-d" does not exist
+2026-08-20T19:48:27.279318084Z stderr F 2026-08-20 19:48:27.277 UTC [428] FATAL:  role "-d" does not exist
+2026-08-20T19:48:42.263169749Z stderr F 2026-08-20 19:48:42.263 UTC [437] FATAL:  role "-d" does not exist
+2026-08-20T19:48:57.267266856Z stderr F 2026-08-20 19:48:57.267 UTC [445] FATAL:  role "-d" does not exist
+2026-08-20T19:49:12.269330874Z stderr F 2026-08-20 19:49:12.269 UTC [453] FATAL:  role "-d" does not exist
+2026-08-20T19:49:27.273421917Z stderr F 2026-08-20 19:49:27.273 UTC [461] FATAL:  role "-d" does not exist
+2026-08-20T19:49:42.291150188Z stderr F 2026-08-20 19:49:42.291 UTC [470] FATAL:  role "-d" does not exist
+2026-08-20T19:49:57.269497407Z stderr F 2026-08-20 19:49:57.269 UTC [478] FATAL:  role "-d" does not exist
+2026-08-20T19:50:12.277796655Z stderr F 2026-08-20 19:50:12.277 UTC [486] FATAL:  role "-d" does not exist
+2026-08-20T19:50:27.270087093Z stderr F 2026-08-20 19:50:27.269 UTC [494] FATAL:  role "-d" does not exist
+2026-08-20T19:50:42.284859383Z stderr F 2026-08-20 19:50:42.284 UTC [503] FATAL:  role "-d" does not exist
+2026-08-20T19:50:57.279031077Z stderr F 2026-08-20 19:50:57.278 UTC [511] FATAL:  role "-d" does not exist
+2026-08-20T19:51:12.275461826Z stderr F 2026-08-20 19:51:12.275 UTC [519] FATAL:  role "-d" does not exist
+2026-08-20T19:51:27.280475479Z stderr F 2026-08-20 19:51:27.280 UTC [527] FATAL:  role "-d" does not exist
+2026-08-20T19:51:42.273963921Z stderr F 2026-08-20 19:51:42.273 UTC [536] FATAL:  role "-d" does not exist
+2026-08-20T19:51:57.279040579Z stderr F 2026-08-20 19:51:57.278 UTC [545] FATAL:  role "-d" does not exist
+2026-08-20T19:52:12.268214076Z stderr F 2026-08-20 19:52:12.268 UTC [553] FATAL:  role "-d" does not exist
+2026-08-20T19:52:27.275485134Z stderr F 2026-08-20 19:52:27.275 UTC [560] FATAL:  role "-d" does not exist
+2026-08-20T19:52:42.278688699Z stderr F 2026-08-20 19:52:42.278 UTC [569] FATAL:  role "-d" does not exist
+2026-08-20T19:52:57.281941241Z stderr F 2026-08-20 19:52:57.281 UTC [577] FATAL:  role "-d" does not exist
+2026-08-20T19:53:12.275950011Z stderr F 2026-08-20 19:53:12.275 UTC [585] FATAL:  role "-d" does not exist
+2026-08-20T19:53:27.291253403Z stderr F 2026-08-20 19:53:27.291 UTC [593] FATAL:  role "-d" does not exist
+2026-08-20T19:53:42.303895674Z stderr F 2026-08-20 19:53:42.303 UTC [602] FATAL:  role "-d" does not exist
+2026-08-20T19:53:57.26674135Z stderr F 2026-08-20 19:53:57.266 UTC [610] FATAL:  role "-d" does not exist
+2026-08-20T19:54:12.26644466Z stderr F 2026-08-20 19:54:12.266 UTC [618] FATAL:  role "-d" does not exist
+2026-08-20T19:54:27.27707555Z stderr F 2026-08-20 19:54:27.276 UTC [626] FATAL:  role "-d" does not exist
+2026-08-20T19:54:42.295358367Z stderr F 2026-08-20 19:54:42.293 UTC [635] FATAL:  role "-d" does not exist
+2026-08-20T19:54:57.270364936Z stderr F 2026-08-20 19:54:57.270 UTC [643] FATAL:  role "-d" does not exist
+2026-08-20T19:55:12.272895822Z stderr F 2026-08-20 19:55:12.272 UTC [651] FATAL:  role "-d" does not exist
+2026-08-20T19:55:27.276139244Z stderr F 2026-08-20 19:55:27.275 UTC [659] FATAL:  role "-d" does not exist
+2026-08-20T19:55:42.29256963Z stderr F 2026-08-20 19:55:42.292 UTC [668] FATAL:  role "-d" does not exist
+2026-08-20T19:55:57.268547567Z stderr F 2026-08-20 19:55:57.268 UTC [676] FATAL:  role "-d" does not exist
+2026-08-20T19:56:12.273724584Z stderr F 2026-08-20 19:56:12.273 UTC [684] FATAL:  role "-d" does not exist
+2026-08-20T19:56:27.275720185Z stderr F 2026-08-20 19:56:27.275 UTC [692] FATAL:  role "-d" does not exist
+2026-08-20T19:56:42.266411245Z stderr F 2026-08-20 19:56:42.264 UTC [700] FATAL:  role "-d" does not exist
+2026-08-20T19:56:57.28784595Z stderr F 2026-08-20 19:56:57.287 UTC [708] FATAL:  role "-d" does not exist
+2026-08-20T19:57:12.27898806Z stderr F 2026-08-20 19:57:12.278 UTC [716] FATAL:  role "-d" does not exist
+2026-08-20T19:57:27.289366053Z stderr F 2026-08-20 19:57:27.289 UTC [724] FATAL:  role "-d" does not exist
+2026-08-20T19:57:42.266105268Z stderr F 2026-08-20 19:57:42.265 UTC [733] FATAL:  role "-d" does not exist
+2026-08-20T19:57:57.283452701Z stderr F 2026-08-20 19:57:57.283 UTC [741] FATAL:  role "-d" does not exist
+2026-08-20T19:58:12.258326143Z stderr F 2026-08-20 19:58:12.257 UTC [749] FATAL:  role "-d" does not exist
+2026-08-20T19:58:27.260764796Z stderr F 2026-08-20 19:58:27.260 UTC [757] FATAL:  role "-d" does not exist
+2026-08-20T19:58:42.282157525Z stderr F 2026-08-20 19:58:42.282 UTC [766] FATAL:  role "-d" does not exist
+2026-08-20T19:58:57.272472473Z stderr F 2026-08-20 19:58:57.272 UTC [774] FATAL:  role "-d" does not exist
+2026-08-20T19:59:12.267219398Z stderr F 2026-08-20 19:59:12.267 UTC [782] FATAL:  role "-d" does not exist
+2026-08-20T19:59:27.264373194Z stderr F 2026-08-20 19:59:27.264 UTC [790] FATAL:  role "-d" does not exist
+2026-08-20T19:59:42.253204872Z stderr F 2026-08-20 19:59:42.252 UTC [799] FATAL:  role "-d" does not exist
+2026-08-20T19:59:57.273872995Z stderr F 2026-08-20 19:59:57.273 UTC [807] FATAL:  role "-d" does not exist
+2026-08-20T20:00:12.276282838Z stderr F 2026-08-20 20:00:12.276 UTC [815] FATAL:  role "-d" does not exist
+2026-08-20T20:00:27.270180006Z stderr F 2026-08-20 20:00:27.270 UTC [823] FATAL:  role "-d" does not exist
+2026-08-20T20:00:42.270925666Z stderr F 2026-08-20 20:00:42.270 UTC [832] FATAL:  role "-d" does not exist
+2026-08-20T20:00:57.261683963Z stderr F 2026-08-20 20:00:57.261 UTC [840] FATAL:  role "-d" does not exist
+2026-08-20T20:01:12.292046169Z stderr F 2026-08-20 20:01:12.291 UTC [848] FATAL:  role "-d" does not exist
+2026-08-20T20:01:27.276170866Z stderr F 2026-08-20 20:01:27.274 UTC [857] FATAL:  role "-d" does not exist
+2026-08-20T20:01:42.273488725Z stderr F 2026-08-20 20:01:42.273 UTC [866] FATAL:  role "-d" does not exist
+2026-08-20T20:01:57.255513187Z stderr F 2026-08-20 20:01:57.255 UTC [874] FATAL:  role "-d" does not exist
+2026-08-20T20:02:12.26780408Z stderr F 2026-08-20 20:02:12.267 UTC [882] FATAL:  role "-d" does not exist
+2026-08-20T20:02:27.287126764Z stderr F 2026-08-20 20:02:27.287 UTC [890] FATAL:  role "-d" does not exist
+2026-08-20T20:02:42.281037358Z stderr F 2026-08-20 20:02:42.280 UTC [899] FATAL:  role "-d" does not exist
+2026-08-20T20:02:57.339694249Z stderr F 2026-08-20 20:02:57.332 UTC [907] FATAL:  role "-d" does not exist
+2026-08-20T20:03:12.247980841Z stderr F 2026-08-20 20:03:12.247 UTC [915] FATAL:  role "-d" does not exist
+2026-08-20T20:03:27.264526888Z stderr F 2026-08-20 20:03:27.264 UTC [923] FATAL:  role "-d" does not exist
+2026-08-20T20:03:42.353115916Z stderr F 2026-08-20 20:03:42.352 UTC [932] FATAL:  role "-d" does not exist
+2026-08-20T20:03:57.277797387Z stderr F 2026-08-20 20:03:57.277 UTC [940] FATAL:  role "-d" does not exist
+2026-08-20T20:04:12.382015131Z stderr F 2026-08-20 20:04:12.381 UTC [948] FATAL:  role "-d" does not exist
+2026-08-20T20:04:27.260238214Z stderr F 2026-08-20 20:04:27.260 UTC [956] FATAL:  role "-d" does not exist
+2026-08-20T20:04:42.269937385Z stderr F 2026-08-20 20:04:42.269 UTC [965] FATAL:  role "-d" does not exist
+2026-08-20T20:04:57.269443867Z stderr F 2026-08-20 20:04:57.269 UTC [973] FATAL:  role "-d" does not exist
+2026-08-20T20:05:12.25756685Z stderr F 2026-08-20 20:05:12.257 UTC [981] FATAL:  role "-d" does not exist
+2026-08-20T20:05:27.278694276Z stderr F 2026-08-20 20:05:27.278 UTC [989] FATAL:  role "-d" does not exist
+2026-08-20T20:05:42.262034775Z stderr F 2026-08-20 20:05:42.261 UTC [998] FATAL:  role "-d" does not exist
+2026-08-20T20:05:57.265251837Z stderr F 2026-08-20 20:05:57.265 UTC [1006] FATAL:  role "-d" does not exist
+2026-08-20T20:06:12.27556395Z stderr F 2026-08-20 20:06:12.275 UTC [1014] FATAL:  role "-d" does not exist
+2026-08-20T20:06:27.268236307Z stderr F 2026-08-20 20:06:27.268 UTC [1022] FATAL:  role "-d" does not exist
+2026-08-20T20:06:42.258024915Z stderr F 2026-08-20 20:06:42.257 UTC [1031] FATAL:  role "-d" does not exist
+2026-08-20T20:06:57.263312624Z stderr F 2026-08-20 20:06:57.263 UTC [1039] FATAL:  role "-d" does not exist
+2026-08-20T20:07:12.267225076Z stderr F 2026-08-20 20:07:12.267 UTC [1047] FATAL:  role "-d" does not exist
+2026-08-20T20:07:27.254869021Z stderr F 2026-08-20 20:07:27.254 UTC [1055] FATAL:  role "-d" does not exist
+2026-08-20T20:07:42.280842526Z stderr F 2026-08-20 20:07:42.280 UTC [1064] FATAL:  role "-d" does not exist
+2026-08-20T20:07:57.261288373Z stderr F 2026-08-20 20:07:57.261 UTC [1072] FATAL:  role "-d" does not exist
+2026-08-20T20:08:12.259059536Z stderr F 2026-08-20 20:08:12.258 UTC [1080] FATAL:  role "-d" does not exist
+2026-08-20T20:08:27.263590989Z stderr F 2026-08-20 20:08:27.263 UTC [1088] FATAL:  role "-d" does not exist
+2026-08-20T20:08:42.268164727Z stderr F 2026-08-20 20:08:42.268 UTC [1097] FATAL:  role "-d" does not exist
+2026-08-20T20:08:57.254099804Z stderr F 2026-08-20 20:08:57.253 UTC [1105] FATAL:  role "-d" does not exist
+2026-08-20T20:09:12.287343293Z stderr F 2026-08-20 20:09:12.287 UTC [1113] FATAL:  role "-d" does not exist
+2026-08-20T20:09:27.285138166Z stderr F 2026-08-20 20:09:27.284 UTC [1121] FATAL:  role "-d" does not exist
+2026-08-20T20:09:42.290525528Z stderr F 2026-08-20 20:09:42.290 UTC [1130] FATAL:  role "-d" does not exist
+2026-08-20T20:09:57.289631769Z stderr F 2026-08-20 20:09:57.289 UTC [1138] FATAL:  role "-d" does not exist
+2026-08-20T20:10:12.276241212Z stderr F 2026-08-20 20:10:12.276 UTC [1146] FATAL:  role "-d" does not exist
+2026-08-20T20:10:27.274323413Z stderr F 2026-08-20 20:10:27.274 UTC [1154] FATAL:  role "-d" does not exist
+2026-08-20T20:10:42.308119817Z stderr F 2026-08-20 20:10:42.307 UTC [1163] FATAL:  role "-d" does not exist
+2026-08-20T20:10:57.291717423Z stderr F 2026-08-20 20:10:57.291 UTC [1171] FATAL:  role "-d" does not exist
+2026-08-20T20:11:12.276595584Z stderr F 2026-08-20 20:11:12.276 UTC [1179] FATAL:  role "-d" does not exist
+2026-08-20T20:11:27.297284772Z stderr F 2026-08-20 20:11:27.297 UTC [1187] FATAL:  role "-d" does not exist
+                                                                                                            

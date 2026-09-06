@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devboard-frontend-depolyment
+  namespace: devboard
+  labels:
+    app: devboard-fronted
+
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: devboard-fronted
+
+  template:
+    metadata:
+      labels:
+        app: devboard-fronted
+
+    spec:
+      containers:
+        - name: devboard-fronted-application
+          image: devboard-frontend:v1.0.33
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 4173
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 4173
+            initialDelaySeconds: 25
+            periodSeconds: 15
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4173
+            initialDelaySeconds: 25
+            periodSeconds: 15
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 90Mi
+            limits:
+              cpu: 250m 
+              memory: 128Mi
+

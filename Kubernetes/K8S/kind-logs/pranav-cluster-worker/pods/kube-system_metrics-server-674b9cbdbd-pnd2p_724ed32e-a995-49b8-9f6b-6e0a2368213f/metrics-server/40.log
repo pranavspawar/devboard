@@ -1,0 +1,19 @@
+2026-08-20T19:37:57.079402591Z stderr F I0820 19:37:55.628359       1 handler.go:304] Adding GroupVersion metrics.k8s.io v1beta1 to ResourceManager
+2026-08-20T19:38:01.730947558Z stderr F I0820 19:38:01.730034       1 requestheader_controller.go:180] Starting RequestHeaderAuthRequestController
+2026-08-20T19:38:01.730988423Z stderr F I0820 19:38:01.730090       1 shared_informer.go:402] "Waiting for caches to sync"
+2026-08-20T19:38:01.73102343Z stderr F I0820 19:38:01.730082       1 configmap_cafile_content.go:205] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::client-ca-file"
+2026-08-20T19:38:01.731031855Z stderr F I0820 19:38:01.730148       1 shared_informer.go:402] "Waiting for caches to sync"
+2026-08-20T19:38:01.731037888Z stderr F I0820 19:38:01.730102       1 configmap_cafile_content.go:205] "Starting controller" name="client-ca::kube-system::extension-apiserver-authentication::requestheader-client-ca-file"
+2026-08-20T19:38:01.731041725Z stderr F I0820 19:38:01.730173       1 shared_informer.go:402] "Waiting for caches to sync"
+2026-08-20T19:38:01.731709925Z stderr F I0820 19:38:01.731503       1 dynamic_serving_content.go:135] "Starting controller" name="serving-cert::/tmp/apiserver.crt::/tmp/apiserver.key"
+2026-08-20T19:38:01.732872133Z stderr F I0820 19:38:01.732586       1 secure_serving.go:214] Serving securely on [::]:10250
+2026-08-20T19:38:01.732905626Z stderr F I0820 19:38:01.732684       1 tlsconfig.go:243] "Starting DynamicServingCertificateController"
+2026-08-20T19:38:03.031228682Z stderr F I0820 19:38:03.030915       1 shared_informer.go:409] "Caches are synced"
+2026-08-20T19:38:03.032037053Z stderr F I0820 19:38:03.031929       1 shared_informer.go:409] "Caches are synced"
+2026-08-20T19:38:03.032125553Z stderr F I0820 19:38:03.031939       1 shared_informer.go:409] "Caches are synced"
+2026-08-20T19:38:06.080488369Z stderr F I0820 19:38:06.080310       1 server.go:192] "Failed probe" probe="metric-storage-ready" err="no metrics to serve"
+2026-08-20T19:38:10.599202374Z stderr F E0820 19:38:10.599053       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://172.18.0.3:10250/metrics/resource\": context deadline exceeded" node="pranav-cluster-worker" timeout="10s"
+2026-08-20T19:38:10.604222683Z stderr F E0820 19:38:10.604000       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://172.18.0.4:10250/metrics/resource\": context deadline exceeded" node="pranav-cluster-control-plane" timeout="10s"
+2026-08-20T19:38:10.608299305Z stderr F E0820 19:38:10.608010       1 scraper.go:147] "Failed to scrape node, timeout to access kubelet" err="Get \"https://172.18.0.2:10250/metrics/resource\": context deadline exceeded" node="pranav-cluster-worker2" timeout="10s"
+2026-08-20T19:38:16.082617278Z stderr F I0820 19:38:16.081718       1 server.go:192] "Failed probe" probe="metric-storage-ready" err="no metrics to serve"
+2026-08-20T19:38:26.083468945Z stderr F I0820 19:38:26.083251       1 server.go:192] "Failed probe" probe="metric-storage-ready" err="no metrics to serve"

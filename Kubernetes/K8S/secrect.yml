@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: devboard-secrets
+  namespace: devboard
+type: Opaque
+data:
+  POSTGRES_USER: cG9zdGdyZXM=
+  POSTGRES_PASSWORD: cm9vdA==
+  POSTGRES_DB: ZGV2Ym9hcmQ=
+

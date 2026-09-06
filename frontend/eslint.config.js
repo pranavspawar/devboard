@@ -20,7 +20,7 @@ export default [
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react/jsx-uses-vars': 'error',   // count <Icon /> as a use
-      'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' }],
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' }],
     },
   },
 

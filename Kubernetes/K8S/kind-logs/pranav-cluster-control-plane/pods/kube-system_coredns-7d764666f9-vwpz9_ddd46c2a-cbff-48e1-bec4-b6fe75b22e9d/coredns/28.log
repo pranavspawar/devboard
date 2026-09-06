@@ -1,0 +1,42 @@
+2026-08-20T19:36:18.417433832Z stdout F maxprocs: Leaving GOMAXPROCS=4: CPU quota undefined
+2026-08-20T19:36:21.00333208Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:21.5035859Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:22.003281501Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:22.503338766Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:23.003450533Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:23.503344093Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:24.003342392Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:24.503654555Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:25.003285007Z stdout F [INFO] plugin/kubernetes: waiting for Kubernetes API before starting server
+2026-08-20T19:36:25.503618404Z stdout F [WARNING] plugin/kubernetes: starting server with unsynced Kubernetes API
+2026-08-20T19:36:25.503871052Z stdout F .:53
+2026-08-20T19:36:25.504914856Z stdout F [INFO] plugin/reload: Running configuration SHA512 = 1b226df79860026c6a52e67daa10d7f0d57ec5b023288ec00c5e05f93523c894564e15b91770d3a07ae1cfbe861d15b37d4a0027e69c546ab112970993a3b03b
+2026-08-20T19:36:25.505945554Z stdout F CoreDNS-1.13.1
+2026-08-20T19:36:25.506026596Z stdout F linux/amd64, go1.25.2, 1db4568
+2026-08-20T19:36:30.234859995Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:36:40.234680965Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:36:44.135786688Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:36:50.607616355Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:36:50.607751734Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:36:50.607763409Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:36:54.137402309Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:37:04.137214544Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:37:14.136847875Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:37:21.510203147Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:37:21.637389581Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:37:21.722497198Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:37:24.136834947Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:37:34.135976738Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:37:44.136413516Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:37:46.136619741Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:37:53.427938285Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:37:54.004009823Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:37:54.342322874Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:37:56.136918685Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:38:06.136885908Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:38:16.136857409Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:38:26.13624388Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
+2026-08-20T19:38:27.962559208Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:38:28.610347653Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:38:29.21167913Z stdout F [ERROR] plugin/kubernetes: Failed to watch
+2026-08-20T19:38:36.137244377Z stdout F [INFO] plugin/ready: Plugins not ready: "kubernetes"
