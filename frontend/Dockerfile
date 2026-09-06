@@ -1,33 +1,16 @@
-# Stage 1 — build the app
-FROM dhi.io/node:26-dev AS build
-
+# Stage 1 — build the app into static files
+FROM node:20-alpine AS build
 WORKDIR /app
-
 COPY package*.json ./
-
-RUN npm install --legacy-peer-deps
-
-# Install vite explicitly if not already in package.json
-RUN npm list vite > /dev/null 2>&1 || npm install --no-save vite@5.4.11
-
+RUN npm ci
 COPY . .
-
 RUN npm run build
 
-# Stage 2 — distroless runtime (minimal, secure)
-FROM dhi.io/node:26
-
+# Stage 2 — small image that only serves the build (no nginx)
+FROM node:20-alpine
 WORKDIR /app
-
-# Copy built files from builder
+RUN npm install -g vite@5 && npm cache clean --force
 COPY --from=build /app/dist ./dist
-
-# Copy only production node_modules (vite for preview server)
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/package.json ./
-
+COPY vite.preview.config.js ./vite.config.js
 EXPOSE 4173
-
-# Use exec form for proper signal handling
-ENTRYPOINT ["node", "--no-warnings"]
-CMD ["./node_modules/.bin/vite", "preview", "--host", "0.0.0.0", "--port", "4173"]
+CMD ["vite", "preview", "--host", "0.0.0.0", "--port", "4173"]
