@@ -22,10 +22,9 @@ WORKDIR /app
 # Copy built files from builder
 COPY --from=build /app/dist ./dist
 
-# Copy all node_modules from builder (includes vite)
+# Copy only production node_modules (vite for preview server)
 COPY --from=build /app/node_modules ./node_modules
-
-COPY vite.preview.config.js ./vite.config.js
+COPY --from=build /app/package.json ./
 
 EXPOSE 4173
 
