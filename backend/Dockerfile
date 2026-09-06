@@ -1,35 +1,26 @@
-# ---------- Build stage ----------
-FROM golang:1.24-alpine AS builder
+FROM dhi.io/golang:1-alpine AS builder
 
 WORKDIR /app
 
-# Download dependencies first for better layer caching
 COPY go.mod go.sum ./
 RUN go mod download
 
-# Copy source code
 COPY . .
+RUN CGO_ENABLED=0 go build -o devboard-backend .
 
-# Build static binary
-RUN CGO_ENABLED=0 GOOS=linux go build -o devboard-backend .
-
-
-# ---------- Runtime stage ----------
-FROM alpine:3.22
+FROM dhi.io/golang:1-alpine
 
 WORKDIR /app
 
-# Install only required runtime certificates
-RUN apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates && \
-    adduser -D -u 10001 app
+COPY --from=builder /app/devboard-backend ./devboard-backend
 
-COPY --from=builder /app/devboard-backend .
+# Ensure binary is executable
+RUN chmod +x ./devboard-backend
 
-RUN chown app:app /app/devboard-backend
-
-USER app
+# DHI image runs as nonroot by default
+USER nonroot
 
 EXPOSE 8080
 
+# Use exec form for proper signal handling
 ENTRYPOINT ["./devboard-backend"]
