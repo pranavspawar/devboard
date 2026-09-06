@@ -16,7 +16,6 @@ FROM alpine:3.22
 WORKDIR /app
 
 RUN apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates && \
     adduser -D -u 10001 app
 
 COPY --from=builder /app/devboard-backend .
