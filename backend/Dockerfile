@@ -1,26 +1,18 @@
-FROM dhi.io/golang:1-alpine AS builder
+FROM golang:1.22-alpine
 
 WORKDIR /app
 
+# Download deps first for better layer caching.
 COPY go.mod go.sum ./
 RUN go mod download
 
+# Build the binary.
 COPY . .
 RUN CGO_ENABLED=0 go build -o devboard-backend .
 
-FROM dhi.io/golang:1-alpine
-
-WORKDIR /app
-
-COPY --from=builder /app/devboard-backend ./devboard-backend
-
-# Ensure binary is executable
-RUN chmod +x ./devboard-backend
-
-# DHI image runs as nonroot by default
-USER nonroot
+# Run as a non-root user.
+RUN adduser -D -u 10001 app && chown -R app:app /app
+USER app
 
 EXPOSE 8080
-
-# Use exec form for proper signal handling
 ENTRYPOINT ["./devboard-backend"]
