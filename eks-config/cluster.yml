@@ -1,0 +1,28 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: devboard-cluster 
+  region: us-west-2
+
+iam:
+  withOIDC: true
+
+managedNodeGroups:
+  - name: managed-nodes
+    instanceType: t3.medium
+    desiredCapacity: 3 
+    minSize: 1
+    maxSize: 3
+    volumeSize: 15 
+    ssh : 
+      enableSsm: true
+
+addons : 
+  - name : vpc-cni 
+  - name: kube-proxy
+  - name: coredns
+  - name: aws-ebs-csi-driver
+    wellKnownPolicies:
+      ebsCSIController: true
+  - name : matrix-server 
