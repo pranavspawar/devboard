@@ -10,11 +10,11 @@ iam:
 
 managedNodeGroups:
   - name: managed-nodes
-    instanceType: t3.medium
+    instanceType: t3.small
     desiredCapacity: 3 
     minSize: 1
     maxSize: 3
-    volumeSize: 15 
+    volumeSize: 20 
     ssh : 
       enableSsm: true
 
