@@ -48,6 +48,9 @@ spec:
                   name: devboard-secrets
                   key: POSTGRES_DB
 
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+  
           volumeMounts:
             - name: init
               mountPath: /docker-entrypoint-initdb.d
@@ -74,9 +77,10 @@ spec:
     - metadata:
         name: data
       spec:
-        storageClassName: manual
+        storageClassName: gp2
         accessModes:
           - ReadWriteOnce
         resources:
           requests:
             storage: 500Mi
+
