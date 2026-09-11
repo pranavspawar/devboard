@@ -9,6 +9,7 @@ import react from '@vitejs/plugin-react';
 //                   compose network, reachable by its service name `backend`.
 export default defineConfig({
   plugins: [react()],
+
   server: {
     host: true,
     port: 5173,
@@ -20,17 +21,23 @@ export default defineConfig({
       },
     },
   },
+
   preview: {
+    host: true,
+    port: 4173,
+    allowedHosts: true,
+
     proxy: {
       '/api': {
-        // `backend` is the compose service name; 8080 is its container port and
-        // must match BACKEND_PORT in .env (the port the Go app listens on).
+        // `backend` is the compose service name; 8080 is its container port
+        // and must match the port the Go app listens on.
         target: 'http://backend:8080',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
+
   test: {
     environment: 'jsdom',
     globals: true,
