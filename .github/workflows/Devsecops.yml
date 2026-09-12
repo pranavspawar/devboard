@@ -1,39 +1,61 @@
-# This is the main file and all workflow call from here 
-name : devsecops 
-on :
-    push: 
-        branches: feature/CI
+# This is the main file and all workflow call from here
+name: devsecops
+
+on:
+  push:
+    branches: feature/kubernetes
 
 jobs:
-  first-code-quality-check-code : 
+  prep:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.t.outputs.tag }}
+    steps:
+      - id: t
+        run: echo "tag=sha-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+  first-code-quality-check-code:
     uses: ./.github/workflows/Code-quality-check.yml
 
-  second-check-secerete-leaks-gitleaks : 
+  second-check-secerete-leaks-gitleaks:
     uses: ./.github/workflows/Secreate-scan.yml
-  
-  thired-dependancy-scan : 
-    uses : ./.github/workflows/Dependancy-check.yml
 
-  Buildstage-Docker-scan-hardolint-trivy-scan : 
+  thired-dependancy-scan:
+    uses: ./.github/workflows/Dependancy-check.yml
+
+  Buildstage-Docker-scan-hardolint-trivy-scan:
     uses: ./.github/workflows/Docker-scan.yml
     secrets: inherit
 
-#  Sonarqube-scan-code:
-#    uses: ./.github/workflows/Sonarqube-scan.yml
-#    secrets: inherit
-    
-  Code-Testing-stage : 
+  # Sonarqube-scan-code:
+  #   uses: ./.github/workflows/Sonarqube-scan.yml
+  #   secrets: inherit
+
+  Code-Testing-stage:
     uses: ./.github/workflows/Code-Testing.yml
 
   Docker-build-push-stage:
-    needs: [first-code-quality-check-code, second-check-secerete-leaks-gitleaks, thired-dependancy-scan, Buildstage-Docker-scan-hardolint-trivy-scan, Code-Testing-stage]
+    needs:
+      - first-code-quality-check-code
+      - second-check-secerete-leaks-gitleaks
+      - thired-dependancy-scan
+      - Buildstage-Docker-scan-hardolint-trivy-scan
+      - Code-Testing-stage
     uses: ./.github/workflows/Docker-Build-push.yml
     secrets: inherit
 
-# ------- CD ------
+  # ------- CD ------
 
- # Docker-deploye-code:
-#    needs: [Docker-build-push-stage]
-#    uses: ./.github/workflows/Code-deploy.yml
-#    secrets: inherit 
-    
+  # Docker-deploye-code:
+  #   needs: [Docker-build-push-stage]
+  #   uses: ./.github/workflows/Code-deploy.yml
+  #   secrets: inherit
+
+  gitops-bump:
+    if: github.event_name != 'pull_request'
+    needs: [prep, Docker-build-push-stage]
+    permissions:
+      contents: write
+    uses: ./.github/workflows/gitops-bump.yml
+    with:
+      image_tag: ${{ needs.prep.outputs.tag }}
