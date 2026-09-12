@@ -1,4 +1,5 @@
-FROM golang:1.22-alpine AS builder
+# ---------- Build stage ----------
+FROM golang:1.25-alpine AS builder
 
 WORKDIR /app
 
@@ -6,29 +7,23 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN CGO_ENABLED=0 go build -o devboard-backend .
 
-FROM alpine:3.21
+RUN CGO_ENABLED=0 GOOS=linux go build -o devboard-backend .
+
+# ---------- Runtime stage ----------
+FROM alpine:3.22
 
 WORKDIR /app
 
-# Install minimal runtime dependencies
-RUN apk add --no-cache ca-certificates
+RUN apk upgrade --no-cache && \
+    adduser -D -u 10001 app
 
-# Copy binary from builder
-COPY --from=builder /app/devboard-backend ./devboard-backend
+COPY --from=builder /app/devboard-backend .
 
-# Ensure binary is executable
-RUN chmod +x ./devboard-backend
+RUN chown app:app /app/devboard-backend
 
-# Run as non-root user
-USER nobody
+USER app
 
 EXPOSE 8080
 
-# Healthcheck to verify container is alive
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
-
-# Use exec form for proper signal handling
 ENTRYPOINT ["./devboard-backend"]
