@@ -56,4 +56,4 @@ jobs:
           fi
           git add -A
           git commit -m "ci: deploy ${TAG} [skip ci]"
-          git push origin HEAD:gitops
+          git push origin HEAD:feature/kubernetes
