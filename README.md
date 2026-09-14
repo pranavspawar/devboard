@@ -1,59 +1,101 @@
-# Hi, I'm Pranav Pawar 👋
+Hi, I'm Pranav Pawar 👋
+DevOps Engineer | AWS | Kubernetes | CI/CD 
+  
+# 🚀 DevBoard
 
-### DevOps Engineer | AWS | Kubernetes | CI/CD
+**Production-style microservices application built to demonstrate an end-to-end DevOps workflow.**
 
-DevOps Engineer with 2+ years of experience working with cloud infrastructure, containerization, Kubernetes, CI/CD, and automation.
+`AWS EKS` · `Kubernetes` · `Docker` · `GitHub Actions` · `ArgoCD` · `Terraform` · `Prometheus` · `Grafana` · `Loki`
 
-### 🛠️ Tech Stack
+## 🏗️ Architecture
 
-**Cloud:** AWS (EC2, VPC, IAM, S3, RDS, EKS, CloudWatch)
-**Containers:** Docker, Kubernetes
-**CI/CD:** GitHub Actions, Jenkins
-**IaC & Automation:** Terraform, Ansible
-**GitOps:** ArgoCD
-**Monitoring:** Prometheus, Grafana, Loki
-**Languages:** Bash, Python, Groovy
-**OS:** Linux, RHEL, Ubuntu, Unix
-**Version Control:** Git, GitHub, GitLab, Bitbucket
+```text
+Developer
+   │
+   ▼
+ GitHub
+   │
+   ▼
+GitHub Actions
+   │
+   ├── Security & Tests
+   │
+   ▼
+Docker Hub
+   │
+   ▼
+ ArgoCD
+   │
+   ▼
+ AWS EKS
+   │
+   ├── Envoy Gateway
+   │       │
+   │       ├── Frontend
+   │       └── Backend ──► PostgreSQL
+   │
+   └── Prometheus ──► Grafana
+       Loki ────────► Grafana
+```
 
-### 🚀 Featured Project
+## 🛠️ Tech Stack
 
-## DevBoard
+| Area       | Technologies        |
+| ---------- | ------------------- |
+| Cloud      | AWS EKS             |
+| Containers | Docker, Kubernetes  |
+| CI/CD      | GitHub Actions      |
+| GitOps     | ArgoCD              |
+| IaC        | Terraform           |
+| Gateway    | Envoy Gateway       |
+| Monitoring | Prometheus, Grafana |
+| Logging    | Loki                |
+| Database   | PostgreSQL          |
+| Security   | Trivy, Gitleaks     |
 
-A production-style microservices application deployed using AWS EKS and Kubernetes.
+## 📁 Project Structure
 
-**Architecture:**
+```text
+DevBoard/
+├── .github/workflows/   # CI/CD & DevSecOps
+├── frontend/            # React/Vite
+├── backend/             # Go/Gin API
+├── Kubernetes/          # K8s manifests
+├── argocd/              # GitOps configuration
+├── terraform/           # AWS infrastructure
+├── monitoring/          # Prometheus/Grafana/Loki
+└── docker-compose.yml   # Local environment
+```
 
-Developer → GitHub → GitHub Actions → Docker Hub → ArgoCD → AWS EKS → Envoy Gateway → Application
+## 🔄 Deployment Flow
 
-**Implemented:**
+```text
+Code Push
+   ↓
+GitHub Actions
+   ↓
+Docker Build & Security Scan
+   ↓
+Docker Hub
+   ↓
+GitOps Image Update
+   ↓
+ArgoCD Sync
+   ↓
+AWS EKS
+```
 
-* Dockerized frontend and backend services
-* Kubernetes deployments and services
-* GitHub Actions CI/CD pipeline
-* DevSecOps checks and container security scanning
+## 👨‍💻 DevOps Highlights
+
+* Containerized frontend and backend services
+* Automated CI/CD with security scanning
 * GitOps deployment using ArgoCD
-* AWS EKS infrastructure
+* Kubernetes deployment on AWS EKS
 * Terraform-based infrastructure
-* Envoy Gateway for application routing
-* Prometheus + Grafana for monitoring
+* Envoy Gateway for HTTP routing
+* Prometheus/Grafana for monitoring
 * Loki for centralized logging
-* PostgreSQL with persistent storage
+* PostgreSQL persistent storage
 
-### 📌 What I'm Currently Working On
-
-* Kubernetes & GitOps
-* AWS EKS
-* Terraform
-* CI/CD automation
-* Observability with Prometheus, Grafana & Loki
-
-### 📂 Projects
-
-🔹 **DevBoard** — Microservices + Kubernetes + AWS EKS + ArgoCD
-🔹 **Terraform AWS Infrastructure** — Infrastructure as Code
-🔹 **DevSecOps CI/CD** — GitHub Actions + Security Scanning
-
-### 📫 Connect With Me
-
-[GitHub](https://github.com/pranavspawar)
+**Pranav Pawar**
+DevOps Engineer | AWS | Kubernetes | CI/CD
