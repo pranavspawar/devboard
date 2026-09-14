@@ -1,0 +1,107 @@
+services:
+  node-exporter:
+     image: prom/node-exporter:latest
+     container_name: node-exporter
+     restart: always
+     volumes:
+       - /proc:/host/proc:ro
+       - /sys:/host/sys:ro
+       - /:/rootfs:ro
+     command:
+       - '--path.procfs=/host/proc'
+       - '--path.rootfs=/rootfs'
+       - '--path.sysfs=/host/sys'
+       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+     expose:
+       - 9100
+
+     ports:
+       - "9100:9100"
+     networks:
+       - monitoring
+
+
+  prometheus :
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart : always  
+    volumes:
+      - prometheus_data:/prometheus # This means if the Prometheus container is recreated, your stored metrics can remain in the Docker volume. 
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro 
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    expose:
+      - 9090
+
+    ports :
+      - "9090:9090"
+        
+    networks : 
+      - monitoring 
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring 
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+  cadvisor :                          # share container realted information to prometheus 
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - monitoring
+    
+  loki:
+    image: grafana/loki:3.0.0
+    container_name: loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki-config.yml:/etc/loki/config.yaml:ro
+      - loki_data:/loki
+    command: -config.file=/etc/loki/config.yaml
+    restart: always
+    networks:
+      - monitoring
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - ./promtail-config.yml:/etc/promtail/config.yaml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -config.file=/etc/promtail/config.yaml
+    depends_on:
+      - loki
+    networks:
+      - monitoring
+    restart: always 
+
+
+networks : 
+  monitoring : 
+    driver : bridge  
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+  loki_data: {}
