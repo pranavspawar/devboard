@@ -1,11 +1,8 @@
-Hi, I'm Pranav Pawar 👋
-DevOps Engineer | AWS | Kubernetes | CI/CD 
-  
 # 🚀 DevBoard
 
 **Production-style microservices application built to demonstrate an end-to-end DevOps workflow.**
 
-`AWS EKS` · `Kubernetes` · `Docker` · `GitHub Actions` · `ArgoCD` · `Terraform` · `Prometheus` · `Grafana` · `Loki`
+`AWS EKS` · `Kind` · `Kubernetes` · `Docker` · `GitHub Actions` · `ArgoCD` · `Terraform` · `Prometheus` · `Grafana` · `Loki` · `OpenTelemetry`
 
 ## 🏗️ Architecture
 
@@ -34,24 +31,33 @@ Docker Hub
    │       ├── Frontend
    │       └── Backend ──► PostgreSQL
    │
-   └── Prometheus ──► Grafana
-       Loki ────────► Grafana
+   └── Observability
+           │
+           ▼
+      OpenTelemetry
+        │       │
+        ▼       ▼
+   Prometheus   Loki
+        │       │
+        └───┬───┘
+            ▼
+         Grafana
 ```
 
 ## 🛠️ Tech Stack
 
-| Area       | Technologies        |
-| ---------- | ------------------- |
-| Cloud      | AWS EKS             |
-| Containers | Docker, Kubernetes  |
-| CI/CD      | GitHub Actions      |
-| GitOps     | ArgoCD              |
-| IaC        | Terraform           |
-| Gateway    | Envoy Gateway       |
-| Monitoring | Prometheus, Grafana |
-| Logging    | Loki                |
-| Database   | PostgreSQL          |
-| Security   | Trivy, Gitleaks     |
+| Area          | Technologies                             |
+| ------------- | ---------------------------------------- |
+| Cloud         | AWS EKS                                  |
+| Kubernetes    | Kind, AWS EKS                            |
+| Containers    | Docker                                   |
+| CI/CD         | GitHub Actions                           |
+| GitOps        | ArgoCD                                   |
+| IaC           | Terraform                                |
+| Gateway       | Envoy Gateway                            |
+| Observability | OpenTelemetry, Prometheus, Grafana, Loki |
+| Database      | PostgreSQL                               |
+| Security      | Trivy, Gitleaks                          |
 
 ## 📁 Project Structure
 
@@ -60,7 +66,7 @@ DevBoard/
 ├── .github/workflows/   # CI/CD & DevSecOps
 ├── frontend/            # React/Vite
 ├── backend/             # Go/Gin API
-├── Kubernetes/          # K8s manifests
+├── Kubernetes/          # Kubernetes manifests
 ├── argocd/              # GitOps configuration
 ├── terraform/           # AWS infrastructure
 ├── monitoring/          # Prometheus/Grafana/Loki
@@ -85,16 +91,51 @@ ArgoCD Sync
 AWS EKS
 ```
 
+## ☸️ Kubernetes
+
+**Local Development**
+
+```text
+Docker → Kind → Kubernetes
+```
+
+Used **Kind** to develop and test Kubernetes deployments locally.
+
+**Cloud Deployment**
+
+```text
+Docker → Docker Hub → ArgoCD → AWS EKS
+```
+
+Used **AWS EKS** for cloud-based Kubernetes deployment.
+
+## 📊 Observability
+
+```text
+Application
+     │
+     ▼
+OpenTelemetry
+     │
+     ├── Metrics ──► Prometheus ──► Grafana
+     │
+     └── Logs ─────► Loki ────────► Grafana
+```
+
+OpenTelemetry is used as the **observability instrumentation/collection layer**, with Prometheus, Loki, and Grafana used for monitoring and visualization.
+
 ## 👨‍💻 DevOps Highlights
 
 * Containerized frontend and backend services
+* Local Kubernetes development using Kind
+* Cloud Kubernetes deployment using AWS EKS
 * Automated CI/CD with security scanning
 * GitOps deployment using ArgoCD
-* Kubernetes deployment on AWS EKS
-* Terraform-based infrastructure
+* Terraform-based AWS infrastructure
 * Envoy Gateway for HTTP routing
-* Prometheus/Grafana for monitoring
-* Loki for centralized logging
+* OpenTelemetry-based observability
+* Prometheus/Grafana monitoring
+* Loki centralized logging
 * PostgreSQL persistent storage
 
 **Pranav Pawar**
