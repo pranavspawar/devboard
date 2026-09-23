@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Code") {
+            steps {
+                git url: "https://github.com/devopsengineer1301-cpu/devboard.git" , branch: "feature/CI"
+                echo "This is code clone step"
+            }
+        }
+
+        stage("Build") {
+            steps {
+                
+                sh 'docker build -t backend:latest -f backend/Dockerfile backend '
+                echo "This is Build step"
+            }
+        }
+
+        stage("Test") {
+            steps {
+                echo "This is Test step"
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                echo "This is Deploy step"
+            }
+        }
+    }
+}
