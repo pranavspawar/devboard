@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Code") {
+            steps {
+                git url: "https://github.com/devopsengineer1301-cpu/devboard.git" , branch: "feature/CI"
+                echo "This is code clone step"
+            }
+        }
+
+        stage("Build") {
+            steps {
+                
+                // sh 'docker build -t my-app:1.0.0 -f frontend/Dockerfile frontend '
+                echo "This is Build step"
+            }
+        }
+
+        stage("Test") {
+            steps {
+                echo "This is Test step"
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                echo "This is Deploy step"
+                sh '''
+                    cp .env.example .env
+                    docker compose up -d 
+                    
+                '''
+               // for explicit build sometime chmages in code but not reflect becasue 
+               //dokcer compose is already up so it cashed only ....not chnage after compose 
+               // use  docker compose up -d --build <service-name> 
+               // service-name is only build 
+               //depends_on makes Docker Compose start/manage the backend as a frontend dependency, 
+               //so docker compose up --build frontend may build/recreate both services.
+                
+            }
+        }
+    }
+}
