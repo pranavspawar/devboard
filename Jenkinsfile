@@ -40,6 +40,7 @@ pipeline {
                         docker push "$Dockeruser/devboard-frontendjenkins:latest"
                     '''
                 }
+             
             }
         }
     }
