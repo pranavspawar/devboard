@@ -34,7 +34,6 @@ pipeline {
                 ]) {
                     sh '''
                         docker login -u "$Dockeruser" -p "$Dockerpassword"
-
                         docker tag devboard/frontend:1.0.0 "$Dockeruser/devboard-frontendjenkins:latest"
 
                         docker push "$Dockeruser/devboard-frontendjenkins:latest"
