@@ -10,6 +10,11 @@ pipeline {
         
             }
         }
+        stage ("Trivy-scan-code"){
+            steps{
+                sh "trivy fs . -o report.jason"
+            }
+        }
         stage("buid"){
             steps{
                 
