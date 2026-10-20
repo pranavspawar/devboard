@@ -1,226 +1,89 @@
-# DevBoard — Advanced (UI + Go + Postgres)
+# ☸️ DevBoard — Kubernetes
 
-This is the same DevBoard UI as the `master` branch, but now the data comes
-from a **real backend** instead of fake in-memory data.
+This branch contains the Kubernetes deployment configuration for DevBoard.
 
-Three pieces talk to each other:
+## 🏗️ Kubernetes Architecture
 
+```text
+                         AWS EKS
+                           │
+                           ▼
+                    Envoy Gateway
+                           │
+                           ▼
+                       HTTPRoute
+                           │
+                ┌──────────┴──────────┐
+                ▼                     ▼
+           Frontend Service      Backend Service
+                │                     │
+                ▼                     ▼
+           Frontend Pods         Backend Pods
+                                      │
+                                      ▼
+                                PostgreSQL
+                                      │
+                                      ▼
+                                Persistent
+                                  Storage
 ```
-browser  →  frontend (React)  →  backend (Go API)  →  database (Postgres)
+
+## 📁 Structure
+
+```text
+Kubernetes/
+│
+├── namespace.yaml
+│
+├── frontend/
+│   ├── deployment.yaml
+│   └── service.yaml
+│
+├── backend/
+│   ├── deployment.yaml
+│   └── service.yaml
+│
+├── postgres/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── pvc.yaml
+│   └── secret.yaml
+│
+└── gateway/
+    ├── gateway.yaml
+    └── httproute.yaml
 ```
 
-- **frontend** — the React app. It also forwards anything starting with `/api`
-  to the backend.
-- **backend** — a small Go program that reads and writes the database.
-- **database** — Postgres, with some example projects and tasks loaded on first
-  start.
+> Update the filenames above to exactly match the repository.
 
-There's no login and no AI here on purpose. The whole point is to *see how the
-pieces connect*.
-
----
-
-## What you need
-
-- **Docker** (with Docker Compose, which comes with Docker Desktop).
-- That's it. You do **not** need Node, Go, or Postgres installed — they all run
-  inside containers.
-
----
-
-## Part 1 — The manual way (do it by hand to understand it)
-
-Run all commands from this folder. We'll start the three pieces one by one, the
-hard way, so you can see exactly what Docker Compose does for you later.
-
-### Step 1: Create a network
-
-Containers can only find each other by name if they're on the **same network**.
-So first we make one:
+## 🚀 Deployment
 
 ```bash
-docker network create devboard-net
+kubectl apply -f Kubernetes/
 ```
 
-### Step 2: Build the images
-
-The frontend and backend are *our* code, so we build an image for each. The
-database is not our code — it's the official Postgres image — so there's
-nothing to build for it.
+Verify:
 
 ```bash
-docker build -t devboard-frontend ./frontend
-docker build -t devboard-backend ./backend
+kubectl get pods -n devboard
+kubectl get svc -n devboard
+kubectl get gateway -n devboard
+kubectl get httproute -n devboard
 ```
 
-The first build downloads base images and compiles the code, so it can take a
-few minutes. Later builds are much faster.
+## 🔍 Main Kubernetes Concepts
 
-### Step 3: Run the database
+* Deployments
+* Services
+* ConfigMaps
+* Secrets
+* PersistentVolumeClaims
+* Gateway API
+* HTTPRoute
+* Container health checks
+* Resource management
+* Kubernetes networking
 
-We name it `postgres`. The backend will look for it by that exact name. The
-`-v ./init/postgres:...` line loads the example data the first time it starts.
+## 🎯 Objective
 
-```bash
-docker run -d --name postgres --network devboard-net \
-  -e POSTGRES_USER=devboard \
-  -e POSTGRES_PASSWORD=devboard \
-  -e POSTGRES_DB=devboard \
-  -v "$PWD/init/postgres":/docker-entrypoint-initdb.d:ro \
-  -p 5432:5432 \
-  postgres:16-alpine
-```
-
-### Step 4: Run the backend
-
-We name it `backend` (the frontend looks for this name). We also tell it how to
-reach the database with `POSTGRES_URL` — notice it uses the name `postgres`.
-
-```bash
-docker run -d --name backend --network devboard-net \
-  -e PORT=8080 \
-  -e POSTGRES_URL="postgres://devboard:devboard@postgres:5432/devboard?sslmode=disable" \
-  -p 8081:8080 \
-  devboard-backend
-```
-
-### Step 5: Run the frontend
-
-It serves the app on port 4173 inside the container; we map it to 8080 on your
-machine.
-
-```bash
-docker run -d --name frontend --network devboard-net \
-  -p 8080:4173 \
-  devboard-frontend
-```
-
-### Step 6: Open it and check
-
-Open **http://localhost:8080** in your browser — you should see the DevBoard
-dashboard with some example tasks. (If the page shows an error for a second on
-first load, the backend is still starting up — just refresh.)
-
-Then check the wiring from the terminal:
-
-```bash
-curl http://localhost:8081/health                      # backend says OK
-curl "http://localhost:8080/api/tasks?project_id=1"    # app → backend → database
-```
-
-### Step 7: Stop and clean up
-
-```bash
-docker rm -f frontend backend postgres
-docker network rm devboard-net
-```
-
-### The one thing to remember: names
-
-The backend finds the database using the name `postgres` (see `POSTGRES_URL`).
-The frontend finds the backend using the name `backend` (see
-`frontend/vite.config.js`). So those container **names must match**, and they
-only work because everything is on the same `devboard-net` network.
-
-That's a lot of typing, and you have to start them in the right order. This is
-exactly the problem Docker Compose solves.
-
----
-
-## Part 2 — The easy way: Docker Compose
-
-Compose does everything from Part 1 — the network, the names, the order, the
-environment values — from one file (`docker-compose.yml`).
-
-First, create your settings file (one time only). Compose reads it to fill in
-passwords and ports, so the stack won't start without it:
-
-```bash
-cp .env.example .env
-```
-
-Then start everything with one command:
-
-```bash
-docker compose up --build
-```
-
-The first build can take a few minutes. When it's done, open
-**http://localhost:8080** in your browser.
-
-Stop it:
-
-```bash
-docker compose down
-```
-
-| Piece    | Open in browser / curl        | Notes                                   |
-| -------- | ----------------------------- | --------------------------------------- |
-| Frontend | http://localhost:8080         | the app; forwards `/api` to the backend |
-| Backend  | http://localhost:8081/health  | the Go API (the app uses it via `/api`) |
-| Postgres | localhost:5432                | user / password: `devboard` / `devboard`|
-
----
-
-## Part 3 — The shortcut: `make`
-
-You don't even have to remember the Compose commands. Run `make` to see what's
-available:
-
-```bash
-make           # list all commands
-make setup     # create your .env file (first time only)
-make up        # build and start everything
-make down      # stop everything
-make logs      # watch the logs
-make reset     # wipe the database and start fresh
-make smoke     # quick check that everything works
-```
-
-`make up` creates `.env` for you automatically, so it's the simplest way to start.
-
-> `make` is optional. It's already available on Linux and macOS (on macOS you may
-> need Xcode Command Line Tools: `xcode-select --install`). On Windows, either use
-> WSL or just run the `docker compose` commands from Part 2 directly.
-
----
-
-## Settings live in `.env`
-
-All the changeable values (passwords, ports) live in one file. The first time,
-copy the example:
-
-```bash
-cp .env.example .env     # or: make setup
-```
-
-`.env.example` is the template kept in git. Your real `.env` is ignored by git,
-so in a real project your secrets never get committed.
-
----
-
-## The API (for reference)
-
-The browser calls these as `/api/...`; the backend serves them at the root.
-
-| Method | Path                      | What it does                          |
-| ------ | ------------------------- | ------------------------------------- |
-| GET    | `/projects`               | list projects                         |
-| POST   | `/projects`               | create a project                      |
-| GET    | `/tasks?project_id=N`     | list tasks in a project               |
-| POST   | `/tasks`                  | create a task                         |
-| PATCH  | `/tasks/:id`              | update a task (e.g. change status)    |
-| GET    | `/search?q=&project_id=N` | search tasks by title                 |
-| GET    | `/health`                 | health check                          |
-
-## Folder layout
-
-```
-.
-├── docker-compose.yml   starts frontend + backend + postgres together
-├── Makefile             short commands (make up, make down, ...)
-├── .env.example         template for settings (copy to .env)
-├── frontend/            React app (Vite). Serves the UI, forwards /api
-├── backend/             Go API (main.go + Dockerfile)
-└── init/postgres/       schema + example data, loaded on first start
-```
+Deploy a multi-service application on Kubernetes with service discovery, persistent storage, HTTP routing, and scalable workloads.
