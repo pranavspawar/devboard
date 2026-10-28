@@ -1,8 +1,19 @@
 # 🚀 DevBoard
 
-**Production-style microservices application built to demonstrate an end-to-end DevOps workflow.**
+**Production-style application built to demonstrate an end-to-end DevOps and DevSecOps workflow.**
 
-☁️ `AWS EKS` · ☸️ `Kind` · ⚙️ `Kubernetes` · 🐳 `Docker` · 🔄 `GitHub Actions` · 🚀 `ArgoCD` · 🏗️ `Terraform` · 📈 `Prometheus` · 📊 `Grafana` · 📝 `Loki` · 🔭 `OpenTelemetry`
+[![GitHub Actions](https://github.com/pranavspawar/devboard/actions/workflows/Devsecops.yml/badge.svg)](https://github.com/pranavspawar/devboard/actions/workflows/Devsecops.yml)
+![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED?logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5?logo=kubernetes&logoColor=white)
+![AWS EKS](https://img.shields.io/badge/AWS-EKS-FF9900?logo=amazoneks&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Argo CD](https://img.shields.io/badge/GitOps-Argo_CD-EF7B4D?logo=argo&logoColor=white)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-844FBA?logo=terraform&logoColor=white)
+![Trivy](https://img.shields.io/badge/Security-Trivy-1904DA?logo=aquasecurity&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Metrics-Prometheus-E6522C?logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Monitoring-Grafana-F46800?logo=grafana&logoColor=white)
+![Loki](https://img.shields.io/badge/Logging-Loki-F4A51C?logo=grafana&logoColor=white)
+![OpenTelemetry](https://img.shields.io/badge/Observability-OpenTelemetry-7B61FF?logo=opentelemetry&logoColor=white)
 
 ---
 
@@ -23,7 +34,7 @@
   🐳 Docker Hub
       │
       ▼
-  🚀 ArgoCD
+  🚀 Argo CD
       │
       ▼
    ☁️ AWS EKS
@@ -50,18 +61,20 @@
 
 ## 🛠️ Tech Stack
 
-| 🔧 Area          | 🚀 Technologies                          |
-| ---------------- | ---------------------------------------- |
-| ☁️ Cloud         | AWS EKS                                  |
-| ☸️ Kubernetes    | Kind, AWS EKS                            |
-| 🐳 Containers    | Docker                                   |
-| 🔄 CI/CD         | GitHub Actions                           |
-| 🚀 GitOps        | ArgoCD                                   |
-| 🏗️ IaC          | Terraform                                |
-| 🌐 Gateway       | Envoy Gateway                            |
+| 🔧 Area | 🚀 Technologies |
+|---|---|
+| ☁️ Cloud | AWS EKS |
+| ☸️ Kubernetes | Kind, Kubernetes, AWS EKS |
+| 🐳 Containers | Docker |
+| 🔄 CI | GitHub Actions |
+| 🚀 GitOps / CD | Argo CD |
+| 🏗️ Infrastructure as Code | Terraform |
+| 🌐 Gateway | Envoy Gateway |
 | 📊 Observability | OpenTelemetry, Prometheus, Grafana, Loki |
-| 🐘 Database      | PostgreSQL                               |
-| 🔐 Security      | Trivy, Gitleaks                          |
+| 🐘 Database | PostgreSQL |
+| 🔐 Security | Trivy, Gitleaks |
+| 💻 Frontend | React, Vite |
+| ⚙️ Backend | Go, Gin |
 
 ---
 
@@ -69,39 +82,52 @@
 
 ```text
 DevBoard/
-├── 🔄 .github/workflows/   # CI/CD & DevSecOps
-├── 💻 frontend/             # React/Vite
-├── ⚙️ backend/              # Go/Gin API
-├── ☸️ Kubernetes/           # Kubernetes manifests
-├── 🚀 argocd/               # GitOps configuration
-├── 🏗️ terraform/            # AWS infrastructure
-├── 📊 monitoring/           # Prometheus/Grafana/Loki
-└── 🐳 docker-compose.yml    # Local environment
+├── .github/workflows/   # CI/CD and DevSecOps workflows
+├── frontend/            # React/Vite frontend
+├── backend/             # Go/Gin API
+├── Kubernetes/          # Kubernetes manifests
+├── argocd/              # GitOps configuration
+├── terraform/           # AWS infrastructure
+├── monitoring/          # Prometheus/Grafana/Loki
+└── docker-compose.yml   # Local development environment
 ```
 
 ---
 
-## 🔄 Deployment Flow
+## 🔄 CI/CD and DevSecOps Pipeline
 
 ```text
-💻 Code Push
-     ↓
-🔄 GitHub Actions
-     ↓
-🐳 Docker Build & 🔐 Security Scan
-     ↓
-📦 Docker Hub
-     ↓
-🔁 GitOps Image Update
-     ↓
-🚀 ArgoCD Sync
-     ↓
-☁️ AWS EKS
+💻 Code Push / Pull Request
+          │
+          ▼
+   🔄 GitHub Actions
+          │
+          ├── 🧪 Code Validation & Tests
+          ├── 🔐 Gitleaks Secret Scanning
+          ├── 🔍 Trivy Container Scanning
+          └── 🛡️ SonarQube Analysis
+                    │
+                    ▼
+             🐳 Docker Build
+                    │
+                    ▼
+               📦 Docker Hub
+                    │
+                    ▼
+           🔁 GitOps Image Update
+                    │
+                    ▼
+               🚀 Argo CD
+                    │
+                    ▼
+                 ☁️ AWS EKS
 ```
+
+The workflow is intended to automate code validation, security checks, container image creation, and the image-update process used by the GitOps deployment workflow.
 
 ---
 
-## ☸️ Kubernetes
+## ☸️ Kubernetes Deployment
 
 ### 💻 Local Development
 
@@ -109,15 +135,15 @@ DevBoard/
 🐳 Docker → 🟢 Kind → ☸️ Kubernetes
 ```
 
-Used **Kind** to develop and test Kubernetes deployments locally.
+Kind provides a local Kubernetes environment for developing and testing application deployments.
 
 ### ☁️ Cloud Deployment
 
 ```text
-🐳 Docker → 📦 Docker Hub → 🚀 ArgoCD → ☁️ AWS EKS
+🐳 Docker → 📦 Docker Hub → 🚀 Argo CD → ☁️ AWS EKS
 ```
 
-Used **AWS EKS** for cloud-based Kubernetes deployment.
+AWS EKS provides the managed Kubernetes environment for cloud deployment. Argo CD manages deployment reconciliation based on the configured Git repository and Kubernetes manifests.
 
 ---
 
@@ -134,24 +160,36 @@ Used **AWS EKS** for cloud-based Kubernetes deployment.
       └── 📝 Logs ─────► Loki ────────► Grafana
 ```
 
-**OpenTelemetry** is used as the **observability instrumentation and collection layer**, with **Prometheus, Loki, and Grafana** used for monitoring, logging, and visualization.
+- **OpenTelemetry:** Instrumentation and telemetry collection.
+- **Prometheus:** Metrics collection and monitoring.
+- **Loki:** Centralized log aggregation.
+- **Grafana:** Metrics and log visualization.
+
+---
+
+## 🔐 Security and DevSecOps
+
+- **Gitleaks:** Detects potentially exposed secrets in source code.
+- **Trivy:** Scans container images and supported artifacts for security vulnerabilities.
+- **SonarQube:** Performs static code analysis and quality checks.
+- **GitHub Actions:** Automates the configured validation and security workflow stages.
 
 ---
 
 ## 👨‍💻 DevOps Highlights
 
-* 🐳 Containerized frontend and backend services
-* ☸️ Local Kubernetes development using **Kind**
-* ☁️ Cloud Kubernetes deployment using **AWS EKS**
-* 🔄 Automated CI/CD with **GitHub Actions**
-* 🔐 Security scanning with **Trivy & Gitleaks**
-* 🚀 GitOps deployment using **ArgoCD**
-* 🏗️ Terraform-based AWS infrastructure
-* 🌐 Envoy Gateway for HTTP routing
-* 🔭 OpenTelemetry-based observability
-* 📈 Prometheus & Grafana monitoring
-* 📝 Loki centralized logging
-* 🐘 PostgreSQL persistent storage
+- 🐳 Containerized frontend and backend services.
+- ☸️ Developed and tested Kubernetes deployments using Kind.
+- ☁️ Configured cloud deployment using AWS EKS.
+- 🔄 Automated CI workflows using GitHub Actions.
+- 🔐 Integrated security scanning with Trivy and Gitleaks.
+- 🚀 Used Argo CD for GitOps-based deployment.
+- 🏗️ Managed AWS infrastructure using Terraform.
+- 🌐 Configured Envoy Gateway for HTTP routing.
+- 🔭 Integrated OpenTelemetry into the observability architecture.
+- 📈 Used Prometheus and Grafana for metrics and visualization.
+- 📝 Used Loki for centralized logging.
+- 🐘 Integrated PostgreSQL for persistent application data.
 
 ---
 
@@ -159,4 +197,7 @@ Used **AWS EKS** for cloud-based Kubernetes deployment.
 
 **Pranav Pawar**
 
-🚀 **DevOps Engineer** | ☁️ AWS | ☸️ Kubernetes | 🔄 CI/CD
+[![GitHub](https://img.shields.io/badge/GitHub-pranavspawar-181717?logo=github&logoColor=white)](https://github.com/pranavspawar)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/devopsengineerpranav)
+
+**DevOps Engineer | AWS | Kubernetes | CI/CD | DevSecOps | GitOps**
