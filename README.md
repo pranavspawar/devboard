@@ -3,17 +3,19 @@
 **Production-style application built to demonstrate an end-to-end DevOps and DevSecOps workflow.**
 
 [![GitHub Actions](https://github.com/pranavspawar/devboard/actions/workflows/Devsecops.yml/badge.svg)](https://github.com/pranavspawar/devboard/actions/workflows/Devsecops.yml)
-![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED?logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5?logo=kubernetes&logoColor=white)
-![AWS EKS](https://img.shields.io/badge/AWS-EKS-FF9900?logo=amazoneks&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
-![Argo CD](https://img.shields.io/badge/GitOps-Argo_CD-EF7B4D?logo=argo&logoColor=white)
-![Terraform](https://img.shields.io/badge/IaC-Terraform-844FBA?logo=terraform&logoColor=white)
 ![Trivy](https://img.shields.io/badge/Security-Trivy-1904DA?logo=aquasecurity&logoColor=white)
-![Prometheus](https://img.shields.io/badge/Metrics-Prometheus-E6522C?logo=prometheus&logoColor=white)
-![Grafana](https://img.shields.io/badge/Monitoring-Grafana-F46800?logo=grafana&logoColor=white)
-![Loki](https://img.shields.io/badge/Logging-Loki-F4A51C?logo=grafana&logoColor=white)
+![Docker](https://img.shields.io/badge/Build-Docker-2496ED?logo=docker&logoColor=white)
+![Docker Hub](https://img.shields.io/badge/Registry-Docker_Hub-2496ED?logo=docker&logoColor=white)
+![Argo CD](https://img.shields.io/badge/GitOps_&_CD-Argo_CD-EF7B4D?logo=argo&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Orchestration-Kubernetes-326CE5?logo=kubernetes&logoColor=white)
+![AWS EKS](https://img.shields.io/badge/Deployment-AWS_EKS-FF9900?logo=amazoneks&logoColor=white)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-844FBA?logo=terraform&logoColor=white)
 ![OpenTelemetry](https://img.shields.io/badge/Observability-OpenTelemetry-7B61FF?logo=opentelemetry&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Metrics-Prometheus-E6522C?logo=prometheus&logoColor=white)
+![Loki](https://img.shields.io/badge/Logging-Loki-F4A51C?logo=grafana&logoColor=white)
+![Grafana](https://img.shields.io/badge/Visualization-Grafana-F46800?logo=grafana&logoColor=white)
+
 
 ---
 
